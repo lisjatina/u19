@@ -24,7 +24,7 @@ public class BlackKnight {
 		aliveKnights = 0;
 		totalKnights = 0;
 		deadKnights = 0;
-		// TODO initialize array of knights with the passed size.
+		//  initialize array of knights with the passed size.
 		// Reset total numbers of total and alive knights to zero
 	}
 
@@ -37,7 +37,7 @@ public class BlackKnight {
 		knights[totalKnights] = this;
 		totalKnights++;
 		aliveKnights++;
-		// TODO set name of newly created knight
+		// set name of newly created knight
 		// 1. set proper count of his arms, legs and head,
 		// 2. set his status to alive
 		// 3. put reference of this knight into next free cell of knights static
@@ -48,7 +48,7 @@ public class BlackKnight {
 	}
 
 	public String cutOffArm() {
-		// TODO handle cutting off knight's arms in following way:
+		//  handle cutting off knight's arms in following way:
 		if (!alive) {
 			return "Only chicken beats dead!";
 		} else {
@@ -74,11 +74,10 @@ public class BlackKnight {
 			}
 		}
 
-		// TODO handle cutting off legs knight's legs in following way:
+		// handle cutting off legs knight's legs in following way:
 		// If knight is dead, return "Only chicken beats dead!"
 		// If knight has some legs, cut one off and return "Bollocks!"
 		// Else return just "Haah!"
-
 	}
 
 	public String cutOffHead() {
@@ -87,25 +86,22 @@ public class BlackKnight {
 
 		if (head > 0)
 			head--;
-			alive = false;
-			aliveKnights--;
-			deadKnights++;
-			String names = "";
-			for (BlackKnight knight : knights
-			) {
-				if (knight.alive) {
-					names = names + knight.name + ",";
-				}
-				if (names.length() > 2) {
-					names = names.substring(0, names.length() - 2);
-				}
-				if ("".equals(names)) {
-					return "You'l burn in hell forever!";
-				}
-			}
+		alive = false;
+		aliveKnights--;
+		deadKnights++;
+		String names = "";
+		for (BlackKnight knight : knights) {
+			if (knight.alive)
+				names = names + knight.name + ", ";
+		}
 
-		return "You'l never win!" + names + " will still fight!";
-	}
+			if (names.length() > 2)
+				names = names.substring(0, names.length() - 2);
+
+			if ("".equals(names))
+				return "You'l burn in hell forever!";
+			return "You'l never win! " + names + " will still fight!";
+		}
 }
 
 
