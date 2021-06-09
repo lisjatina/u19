@@ -10,10 +10,10 @@ public class Array {
 		array = new int[args.length];
 		for (int i = 0; i < args.length ; i++) {
 		array[i] = Integer.parseInt(args[i]);
-		Arrays.sort(array);
 		}
+		Arrays.sort(array);
 
-		// TODO Use passed parameters for main method to initialize array
+		// Use passed parameters for main method to initialize array
 		// Hint: use Run— Run configurations... Arguments to pass parameters to
 		// main method when calling from Eclipse
 		// Sort elements in this array in ascending order
@@ -24,12 +24,12 @@ public class Array {
 	}
 
 	public static void printSortedArray() {
-		// TODO print content of array on standard output
+		// print content of array on standard output
 		System.out.println(Arrays.toString(array));
 	}
 
 	public static int[] returnSortedArray() {
-				// TODO return reference to this array
+		//  return reference to this array
 		return array;
 	}
 

@@ -2,7 +2,7 @@ package jtm.activity03;
 
 public class RandomPerson {
 
-	// TODO Create _private_ structure of random person to store values:
+	// Create _private_ structure of random person to store values:
 	// name as String,
 	// age as int,
 	// weight as float,
@@ -17,7 +17,7 @@ public class RandomPerson {
     private boolean isFemale;
     private char smile;
 
-	// TODO Select menu "Source — Generate Getters and Setters..." then select
+	//  Select menu "Source — Generate Getters and Setters..." then select
 	// all properties and generate _public_ getters and setters for all of them
 
 
