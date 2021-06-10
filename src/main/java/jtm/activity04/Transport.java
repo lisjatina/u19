@@ -80,7 +80,7 @@ public class Transport {
 	// Return transport id and type as string e.g. "AAA Transport"
 	// HINT: use this.getClass().getSimpleName(); to get type of transport
 	protected final String getType() {
-		// TODO return required value
+		//  return required value
 		return id+ " " + this.getClass().getSimpleName();
 	}
 
@@ -89,10 +89,10 @@ public class Transport {
 	// HINT: String.format(Locale.US, "%.2f", float) to format float number with
 	// fixed mask
 	public String move(Road road) {
-		// TODO If transport has enough fuel, decrease actual amount of fuel by
+		//  If transport has enough fuel, decrease actual amount of fuel by
 		// necessary amount and return String in form:
 		// "AAA Type is moving on From–To, 180km"
-		// TODO If there is no enough fuel in tank, return string in form:
+		//  If there is no enough fuel in tank, return string in form:
 		// "Cannot move on From–To, 180km. Necessary
 		// fuel:0.00l, fuel in tank:0.00l"
 		float fuelNeeded = consumption * road.getDistance() / 100;

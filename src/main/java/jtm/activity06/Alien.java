@@ -7,14 +7,14 @@ public interface Alien {
 	 */
 	final static int BirthWeight = -1;
 
-	/**
-	 * @param If Alien is hungry (stomach is empty), eat Object. Possibly eaten
-	 *           items are:
-	 * 
-	 *           1. Integer, 2. Humanoid, 3. Alien.
-	 * 
-	 *           Gain weight of eaten item, and kill it, if possible
-	 */
+//	/**
+//	 * @param If Alien is hungry (stomach is empty), eat Object. Possibly eaten
+//	 *           items are:
+//	 *
+//	 *           1. Integer, 2. Humanoid, 3. Alien.
+//	 *
+//	 *           Gain weight of eaten item, and kill it, if possible
+//	 */
 	public void eat(Object item);
 
 	/**
