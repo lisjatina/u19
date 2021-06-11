@@ -1,43 +1,27 @@
 package jtm.activity08;
 
-// TODO implement basic mathematical operations with int numbers in range
-// of [-10..+10] (including)
-// Note that:
-// 1. input range is checked using assertions (so if they are disabled, inputs can be any int)
-// 2. outputs are always checked and exception is thrown if it is outside proper range
-
 public class SimpleCalc {
 
-	// TODO specify that method can throw SimpleCalcException
-	public static int add(int a, int b)
-			{
-		// TODO implement adding operation
-		return 0;
+	public static int add(int a, int b) throws SimpleCalcException
+			{validateInput(a,b);
+		return validateOutput(a,b, "+");
+	}
+	public static int subtract(int a, int b) throws SimpleCalcException
+			{ validateInput(a,b);
+		return validateOutput(a,b, "-");
 	}
 
-	// TODO specify that method can throw SimpleCalcException
-	public static int subtract(int a, int b)
-			{
-		// TODO implement subtract operation
-		return 0;
+	public static int multiply(int a, int b) throws SimpleCalcException
+			{ validateInput(a,b);
+			return validateOutput(a,b, "*");	}
+
+	public static int divide(int a, int b) throws SimpleCalcException
+			{validateInput(a,b);
+			return validateOutput(a,b, "/");
 	}
 
-	// TODO specify that method can throw SimpleCalcException
-	public static int multiply(int a, int b)
-			{
-		// TODO implement multiply operation
-		return 0;
-	}
-
-	// TODO specify that method can throw SimpleCalcException
-	public static int divide(int a, int b)
-			{
-		// TODO implement divide operation
-		return 0;
-	}
-
-	// TODO: 1 specify that method can throw SimpleCalcException
-	// TODO: 2 Validate that inputs are in range of -10..+10 using assertions
+	// 1 specify that method can throw SimpleCalcException
+	// 2 Validate that inputs are in range of -10..+10 using assertions
 	// Use following messages for assertion description if values are not in
 	// range:
 	// "input value a: A is below -10"
@@ -60,9 +44,23 @@ public class SimpleCalc {
 
 	// TODO: 3 Catch assertion errors and wrap them in SimpleCalcExceptions with
 	// message "Assertion error" and caught assertion error as a cause.
-	private static void validateInput(int a, int b)
+	private static void validateInput(int a, int b) throws SimpleCalcException
 			{
+				try {
+					if (a < -10 & b<-10 ) assert false: "input value a: " + a +  " is below -10 and b: " + b + " is below -10";
+					if (a >10 & b<-10 ) assert false: "input value a: " + a +  " is above 10 and b: " + b + " is below -10";
+					if (a < -10 & b>10 ) assert false: "input value a: " + a +  " is below -10 and b: " + b + " is above 10";
+					if (a >10 & b>10 ) assert false: "input value a: " + a +  " is above 10 and b: " + b + " is above 10";
 
+					if (a < -10 ) assert false: "input value a: " + a +  " is below -10";
+					if (a >10 ) assert false: "input value a: " + a +  " is above 10";
+
+					if (b < -10 ) assert false: "input value b: " + b +  " is below -10";
+					if (b >10 ) assert false: "input value b: " + b +  " is above 10";
+
+				} catch (AssertionError e){
+					throw  new SimpleCalcException("Assertion error", e);
+				}
 
 	}
 
@@ -79,8 +77,31 @@ public class SimpleCalc {
 	// If division by zero is performed, catch original exception and create
 	// new SimpleCalcException with message "division by zero" and add
 	// original division exception as a cause for it.
-	private static int validateOutput(int a, int b, String operation)
+	private static int validateOutput(int a, int b, String operation) throws SimpleCalcException
 			{
-		return 0;
+				int result = 0;
+				switch (operation){
+					case "+":
+						result = a+b;
+						break;
+					case "-":
+						result = a-b;
+						break;
+					case "*":
+						result= a*b;
+						break;
+					case "/":
+						if (b == 0){
+							throw new SimpleCalcException("division by zero", new ArithmeticException("/ by zero"));
+						}
+						result = a/b;
+						break;				}
+				if (result>10)
+					throw new SimpleCalcException("output value " + a + " " + operation + " " + b
+					+ " = " + result + " is above 10");
+				if (result< - 10)
+					throw new SimpleCalcException("output value " + a + " " + operation + " " + b
+							+ " = " + result + " is below -10");
+		return result;
 	}
 }
