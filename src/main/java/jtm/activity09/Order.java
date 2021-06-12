@@ -1,6 +1,6 @@
 package jtm.activity09;
 
-/*- TODO #1
+/*- #1
  * Implement Comparable interface with Order class
  * Hint! Use generic type of comparable items in form: Comparable<Order>
  * 
@@ -25,9 +25,48 @@ package jtm.activity09;
  * 
  */
 
-public class Order {
+import java.util.Objects;
+
+public class Order implements Comparable <Order>{
 	String customer; // Name of the customer
 	String name; // Name of the requested item
 	int count; // Count of the requested items
 
+	public Order(String customer, String name, Integer count) {
+		this.customer = customer;
+		this.name = name;
+		this.count = count;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Order)
+		return toString().equals(o.toString());
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return toString().hashCode();
+	}
+
+	@Override
+	public int compareTo(Order order) {
+		// return toString().compareTo(order.toString()); - can compare correct, if no
+		//digits involved
+		int status = name.compareTo(order.name);
+		if (status == 0){
+			status = customer.compareTo(order.customer);
+			if (status == 0){
+				status = count - order.count;
+			}
+		}
+		return status;
+	}
+
+	@Override
+	public String toString() {
+		return name + ": " + customer + ": "
+				 + count;
+	}
 }
