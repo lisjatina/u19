@@ -42,7 +42,7 @@ public class SimpleCalc {
 	// if (long && complicated || statement)
 	// assert false: "message if statement not fulfilled";
 
-	// TODO: 3 Catch assertion errors and wrap them in SimpleCalcExceptions with
+	// 3 Catch assertion errors and wrap them in SimpleCalcExceptions with
 	// message "Assertion error" and caught assertion error as a cause.
 	private static void validateInput(int a, int b) throws SimpleCalcException
 			{
@@ -64,7 +64,7 @@ public class SimpleCalc {
 
 	}
 
-	// TODO use this method to check that result of operation is also in
+	// use this method to check that result of operation is also in
 	// range of -10..+10.
 	// If result is not in range:
 	// throw SimpleCalcException with message:

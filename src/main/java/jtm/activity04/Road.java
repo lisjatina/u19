@@ -6,7 +6,7 @@ public class Road {
 	private String to; // End point
 	private int distance; // distance in km
 
-	/*- TODO #1
+	/*-  #1
 	 * Select menu Source — Generate Constructor using Fields...
 	 * and create constructor which sets from, to and distance
 	 * values of the newly created object
@@ -18,7 +18,7 @@ public class Road {
 		this.distance = distance;
 	}
 
-	/*- TODO #2
+	/*- #2
 	 * Create constructor without parameters, which sets empty
 	 * values or 0 to all object properties
 	 */
@@ -26,7 +26,7 @@ public class Road {
 		this ("", "", 0);
 	}
 
-	/*- TODO #3
+	/*- #3
 	 * Select menu: Source — Generate getters and Setters...
 	 * and generate public getters/setters for distance, from and to
 	 * fields
@@ -55,7 +55,7 @@ public class Road {
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
-	/*- TODO #4
+	/*- #4
 	 * Select menu: Source — Generate toString()...
 	 * and implement this method, that it returns String in form:
 	 * "From — To, 00km",

@@ -9,7 +9,7 @@ public class Transport {
 	private int tankSize; // tank size in litres
 	private float fuelInTank; // fuel in tank
 
-	/*- TODO #1
+	/*- #1
 	 * Select menu Source — Generate Constructor using Fields...
 	 * and create constructor which sets id, consumption, tankSize
 	 * values of the newly created object
@@ -22,7 +22,7 @@ public class Transport {
 		this.tankSize = tankSize;
 		this.fuelInTank = tankSize;
 	}
-	/*- TODO #2
+	/*-
 	 * Select menu: Source — Generate getters and Setters...
 	 * and generate public getters for consumption, tankSize, id, and
 	 * fuelInTank fields
@@ -59,7 +59,7 @@ public class Transport {
 	public void setFuelInTank(float fuelInTank) {
 		this.fuelInTank = fuelInTank;
 	}
-	/*- TODO #3
+	/*-  #3
 	 * Select menu: Source — Generate toString()...
 	 * and implement this method, that returns String in form:
 	 * "Id:ID cons:0.0l/100km, tank:00l, fuel:00.00l"

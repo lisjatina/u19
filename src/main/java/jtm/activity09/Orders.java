@@ -35,8 +35,6 @@ import java.util.*;
 public class Orders implements Iterator <Object> {
 	List <Order> orders ;
 	Iterator<Order> iterator;
-	//int index;
-
 
 	public Orders() {
 		orders = new ArrayList<>();
@@ -96,14 +94,11 @@ public class Orders implements Iterator <Object> {
 	@Override
 	public boolean hasNext() {
 		return iterator.hasNext();
-		//return index < orders.size();
 	}
 
 	@Override
 	public Order next() {
 		return iterator.next();
-//		index++;
-//		return orders.get(index);
 	}
 }
 

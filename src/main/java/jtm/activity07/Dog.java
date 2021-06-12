@@ -9,8 +9,10 @@ public class Dog extends Mammal{
 
     public void setName(String name) {
 
-        Character.toUpperCase(name.charAt(0));
-
-        this.name = name;
+        System.out.println("setName: " + name);
+        if (name.matches("^\\p{IsUppercase}\\p{IsLowercase}*$"))
+            this.name = name;
+        else
+        this.name = "";
     }
 }
