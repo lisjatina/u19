@@ -1,26 +1,22 @@
 package jtm.activity05;
 
 import jtm.activity04.Road;
-import jtm.activity04.Transport;
 
-public class Amphibia extends Transport {
-    private Ship ship;
-    private Vehicle vehicle;
-
+public class Amphibia extends Vehicle {
+    private byte sails;
 
     public Amphibia(String id, float consumption, int tankSize, byte sails, int wheels) {
-        super(id, consumption, tankSize);
-        ship = new Ship (id, sails);
-        vehicle = new Vehicle(id, consumption,tankSize,wheels);
+        super(id, consumption, tankSize, wheels);
+        this.sails = sails;
     }
 
     @Override
     public String move(Road road) {
         if (road instanceof WaterRoad){
-            return ship.move(road);
+            return super.getType()+" is sailing on " + road + " with " + sails
+                    + " sails";
         } else {
-            return vehicle.move(road).replace("Vehicle","Amphibia");
+            return super.move(road).replace("Vehicle","Amphibia");
         }
     }
-    // TODO: 6/10/2021 Check mistakes by unit-tests 
 }

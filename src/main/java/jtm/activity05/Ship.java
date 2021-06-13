@@ -13,7 +13,7 @@ public class Ship extends Transport {
     @Override
     public String move(Road road) {
         if (road instanceof WaterRoad){
-            return super.getId() + "" + super.getType()+" is sailing on " + road + " with " + sails
+            return super.getType()+" is sailing on " + road + " with " + sails
                     + " sails";
             //String status = super.move(road);
             //return status.replace("moving","sailing");
