@@ -37,7 +37,7 @@ public class Orders implements Iterator <Object> {
 	Iterator<Order> iterator;
 
 	public Orders() {
-		orders = new ArrayList<>();
+		orders = new LinkedList<>();
 		iterator = orders.iterator();
 	}
 
