@@ -75,7 +75,7 @@ public class StreamEditor {
 			reader = new BufferedReader(new FileReader(inFile));
 		}
 
-		/*- TODO Initialize new buffered character writer (PrintWriter) and:
+		/*-  Initialize new buffered character writer (PrintWriter) and:
 		 *  1. If output file name (4th parameter) is "-", add writer to the standard output (System.out)
 		 *  2. Otherwise initialize writer to the file of given name.
 		 */
@@ -85,7 +85,7 @@ public class StreamEditor {
 			writer = new PrintWriter(new FileWriter(new File(args[3])));
 		}
 
-		// TODO Read lines in loop from passed file/standard input till to the
+		//  Read lines in loop from passed file/standard input till to the
 		// end. Count number of read lines. Before appending line into writer
 		// check, if it needs to be changed/deleted. Change its value to passed
 		// content or just skip appending it to the writer.
@@ -110,15 +110,9 @@ public class StreamEditor {
 				writer.println();
 				writer.println(content);
 			}
-			reader.close();
-			writer.flush();
-			writer.close();
-
-			// TODO If number of input line is larger than number of lines in file,
-			// pad file with empty lines before necessary line.
-
-			// TODO flush cache of the writer and close connections of the reader
-			// and writer
 		}
+		reader.close();
+		writer.flush();
+		writer.close();
 	}
 }
