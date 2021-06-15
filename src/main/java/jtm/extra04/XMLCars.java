@@ -5,6 +5,8 @@ package jtm.extra04;
 // Import necessary classes from javax.xml.* and, if necessary, org.w3c.dom.*
 
 public class XMLCars {
+	private int id;
+	private String model;
 
 	/*- TODO #2
 	 * Declare variables to remember previously generated structure of XML
