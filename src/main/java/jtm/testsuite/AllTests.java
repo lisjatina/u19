@@ -103,13 +103,13 @@ import jtm.extra20.CodeWeightTest;
 public class AllTests {
 
 	/** Default user for the system */
-	public static final String user = "u19";
+	public static final String user = "u00";
 
 	/** Default password for the user */
-	public static final String password = "u19";
+	public static final String password = "u00";
 
 	/** Name of the database */
-	public static final String database = "database19";
+	public static final String database = "database00";
 
 	/** Port number for network apps */
 	public static final int port = 7701;

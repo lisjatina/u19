@@ -58,7 +58,7 @@ public class ArrayFillerManager {
 	}
 
 	public static void fillParalelly() {
-		// TODO create cycle which creates new ArrayFiller objects
+		// create cycle which creates new ArrayFiller objects
 		// with any range and pass them as references to the Thread constructor.
 		// Add newly created Thread objects into threads list and start them
 		// threads using .start() method. Note that invocation of .start() for
@@ -77,7 +77,7 @@ public class ArrayFillerManager {
 		threads = new LinkedList<>();
 		for (int i = 1; i <= threadNo; i++) {
 			to = to+range;
-			if (to == array.length)
+			if (i ==threadNo)
 				to = array.length -1;
 			Thread thread = new Thread(new ArrayFiller(latency,minValue,maxValue,from, to));
 			thread.start();
