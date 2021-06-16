@@ -19,7 +19,7 @@ public class StudentManager {
 
 	public StudentManager() {
 		/*-
-		 * TODO #1 When new StudentManager is created, create connection to the database server:
+		 * #1 When new StudentManager is created, create connection to the database server:
 		 * - url = "jdbc:mysql://localhost/?autoReconnect=true&serverTimezone=UTC&characterEncoding=utf8"
 		 * - user = AllTests.user
 		 * - pass = AllTests.password
@@ -202,5 +202,4 @@ public class StudentManager {
 			throwables.printStackTrace();
 		}
 	}
-
 }
