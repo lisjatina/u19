@@ -1,7 +1,5 @@
 package jtm.activity14;
 
-import static jtm.testsuite.AllTests.database;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,9 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 
-import jtm.testsuite.AllTests;
+import static jtm.testsuite.AllTests.user;
+import static jtm.testsuite.AllTests.password;
+import static jtm.testsuite.AllTests.database;
 
 public class StudentManager {
 	protected Connection conn;
@@ -30,6 +29,13 @@ public class StudentManager {
 		 * server-wise, not just database-wise.
 		 * 3. Set AutoCommit to false and use conn.commit() where necessary in other methods
 		 */
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/?serverTimezone=UTC", user, password);
+			conn.setAutoCommit(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -39,12 +45,23 @@ public class StudentManager {
 	 * @return a Student object
 	 */
 	public Student findStudent(int id) {
-		// TODO #2 Write an sql statement that searches student by ID.
+		// #2 Write an sql statement that searches student by ID.
 		// If student is not found return Student object with zero or null in
 		// its fields!
 		// Hint: Because default database is not set in connection,
 		// use full notation for table "databaseXX.Student"
-		return null;
+		try {
+			String sql = "SELECT * FROM " + database + ".Student where id = ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet results = statement.executeQuery();
+			if (results.next()){
+				return new Student(results.getInt("id"), results.getString(2), results.getString(3));
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return new Student();
 	}
 
 	/**
@@ -56,12 +73,26 @@ public class StudentManager {
 	 * @return a list of Student object.
 	 */
 	public List<Student> findStudent(String firstName, String lastName) {
-		// TODO #3 Write an sql statement that searches student by first and
+		// #3 Write an sql statement that searches student by first and
 		// last name and returns results as ArrayList<Student>.
 		// Note that search results of partial match
 		// in form ...like '%value%'... should be returned
 		// Note, that if nothing is found return empty list!
-		return null;
+		List <Student> students = new ArrayList<>();
+		try {
+			String sql = "SELECT * FROM " + database + ".Student where firstName like ? and lastName like ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, "%" + firstName + "%");
+			statement.setString(2, "%" + lastName + "%");
+			ResultSet results = statement.executeQuery();
+			while (results.next()){
+				students.add(new Student(results.getInt("id"), results.getString(2), results.getString(3)));
+			}
+
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return students;
 
 	}
 
@@ -74,7 +105,19 @@ public class StudentManager {
 	 */
 
 	public boolean insertStudent(String firstName, String lastName) {
-		// TODO #4 Write an sql statement that inserts student in database.
+		// #4 Write an sql statement that inserts student in database.
+		try {
+			String sql = "INSERT INTO " + database + ".Student (firstName, lastName) VALUES (?, ?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, firstName);
+			statement.setString(2, lastName);
+			int updatedRows = statement.executeUpdate();
+			conn.commit();
+			if(updatedRows == 1)
+				return true;
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 		return false;
 	}
 
@@ -85,7 +128,20 @@ public class StudentManager {
 	 * @return true on success, false on error (e.g. non-unique id)
 	 */
 	public boolean insertStudent(Student student) {
-		// TODO #5 Write an sql statement that inserts student in database.
+		// #5 Write an sql statement that inserts student in database.
+		try {
+			String sql = "INSERT INTO " + database + ".Student (id, firstName, lastName) VALUES (?, ?, ?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, student.getId());
+			statement.setString(2, student.getFirstName());;
+			statement.setString(3, student.getLastName());
+			int updatedRows = statement.executeUpdate();
+			conn.commit();
+			if(updatedRows == 1)
+				return true;
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 		return false;
 	}
 
@@ -98,7 +154,20 @@ public class StudentManager {
 	 */
 	public boolean updateStudent(Student student) {
 		boolean status = false;
-		// TODO #6 Write an sql statement that updates student information.
+		// #6 Write an sql statement that updates student information.
+		try {
+			String sql = "UPDATE " + database + ".Student SET firstName = ?, lastName = ? WHERE (id = ?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, student.getFirstName());
+			statement.setString(2, student.getLastName());
+			statement.setInt(3, student.getId());
+			int updatedRows = statement.executeUpdate();
+			conn.commit();
+			if(updatedRows == 1)
+				return true;
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 		return false;
 	}
 
@@ -110,12 +179,28 @@ public class StudentManager {
 	 * @return true if row was deleted.
 	 */
 	public boolean deleteStudent(int id) {
-		// TODO #7 Write an sql statement that deletes student from database.
+		// #7 Write an sql statement that deletes student from database.
+		try {
+			String sql = "DELETE FROM " + database + ".Student WHERE (id = ?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			int updatedRows = statement.executeUpdate();
+			conn.commit();
+			if(updatedRows == 1)
+				return true;
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 		return false;
 	}
 
 	public void closeConnecion() {
-		// TODO Close connection to the database server
+		// Close connection to the database server
+		try {
+			conn.close();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 	}
 
 }
