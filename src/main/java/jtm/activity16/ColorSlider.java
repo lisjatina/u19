@@ -78,22 +78,22 @@ public class ColorSlider {
 		 * use .setName("name") method to set name property of redSlider objects as:
 		 * redSlider, greenSlider and blueSlider.
 		 */
-		JSlider redSlider = new JSlider();
+		redSlider = new JSlider();
 		redSlider.setName("redSlider");
 		redSlider.setValue(0);
 		redSlider.setMaximum(255);
 		frame.getContentPane().add(redSlider,"cell 2 0,growx");
 
-		JSlider greenSlider = new JSlider();
+		greenSlider = new JSlider();
 		greenSlider.setName("redSlider");
 		greenSlider.setValue(0);
 		greenSlider.setMaximum(255);
 		frame.getContentPane().add(greenSlider,"cell 2 1,growx");
 
-		JSlider blueSlider = new JSlider();
-		blueSlider .setName("redSlider");
-		blueSlider .setValue(0);
-		blueSlider .setMaximum(255);
+		blueSlider = new JSlider();
+		blueSlider.setName("redSlider");
+		blueSlider.setValue(0);
+		blueSlider.setMaximum(255);
 		frame.getContentPane().add(blueSlider ,"cell 2 2,growx");
 
 		frame.getContentPane().add(txtTest, "cell 0 3 3 3,grow");
