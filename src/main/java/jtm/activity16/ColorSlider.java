@@ -12,7 +12,7 @@ import javax.swing.event.ChangeListener;
 
 import net.miginfocom.swing.MigLayout;
 
-/*- TODO Install WindowBulder plugin on Eclipse
+/*- Install WindowBulder plugin on Eclipse
  * Then right click on this class in Project Explorer 
  * and choose "Open With" and choose "WindowBuilder editor"
  * Then choose "Design" tab of the editor.
@@ -65,9 +65,36 @@ public class ColorSlider {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[][][grow]", "[][][][][][grow]"));
+
 		txtTest = new JTextArea();
 		txtTest.setName("testArea");
 		txtTest.setText("Test area");
+
+		/*-  add JSliders: redSlider, greenSlider, blueSlider into form
+		 * set their range accordingly from 0 to 255
+		 * Layout them correctly against appropriate labels
+		 * red redSlider should be in "cell 2 0", green in "cell 2 1",
+		 * and blue in "cell 2 2"
+		 * use .setName("name") method to set name property of redSlider objects as:
+		 * redSlider, greenSlider and blueSlider.
+		 */
+		JSlider redSlider = new JSlider();
+		redSlider.setName("redSlider");
+		redSlider.setValue(0);
+		redSlider.setMaximum(255);
+		frame.getContentPane().add(redSlider,"cell 2 0,growx");
+
+		JSlider greenSlider = new JSlider();
+		greenSlider.setName("redSlider");
+		greenSlider.setValue(0);
+		greenSlider.setMaximum(255);
+		frame.getContentPane().add(greenSlider,"cell 2 1,growx");
+
+		JSlider blueSlider = new JSlider();
+		blueSlider .setName("redSlider");
+		blueSlider .setValue(0);
+		blueSlider .setMaximum(255);
+		frame.getContentPane().add(blueSlider ,"cell 2 2,growx");
 
 		frame.getContentPane().add(txtTest, "cell 0 3 3 3,grow");
 
@@ -79,31 +106,37 @@ public class ColorSlider {
 		JLabel lblB = new JLabel("B");
 		frame.getContentPane().add(lblB, "cell 1 2");
 
-		/*- TODO add JSliders: redSlider, greenSlider, blueSlider into form
-		 * set their range accordingly from 0 to 255
-		 * Layout them correctly against appropriate labels
-		 * red slider should be in "cell 2 0", green in "cell 2 1",
-		 * and blue in "cell 2 2"
-		 * use .setName("name") method to set name property of slider objects as:
-		 * redSlider, greenSlider and blueSlider.
-		 */
-
-
-		// TODO set initial values of sliders to 0 and text area background to black
+		setBackgroundColor();
 
 		// Make JFrame visible
 		frame.setVisible(true);
 
+		// set initial values of sliders to 0 and text area background to black
 	}
 
 	private void add_listeners() {
-		// TODO add event listeners to all sliders and call change_color method
+		//  add event listeners to all sliders and call change_color method
 		// from them
+
+		redSlider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e){
+				setBackgroundColor();}
+		});
+
+		greenSlider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e){
+				setBackgroundColor();}
+		});
+
+		blueSlider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e){
+				setBackgroundColor();}
+		});
 	}
 
 	private void setBackgroundColor() {
-		// TODO change background id of txtTest object accordingly to
+		// change background id of txtTest object accordingly to
 		// id slider values. Use Color object for that
+		txtTest.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 	}
-
 }
