@@ -85,13 +85,13 @@ public class ColorSlider {
 		frame.getContentPane().add(redSlider,"cell 2 0,growx");
 
 		greenSlider = new JSlider();
-		greenSlider.setName("redSlider");
+		greenSlider.setName("greenSlider");
 		greenSlider.setValue(0);
 		greenSlider.setMaximum(255);
 		frame.getContentPane().add(greenSlider,"cell 2 1,growx");
 
 		blueSlider = new JSlider();
-		blueSlider.setName("redSlider");
+		blueSlider.setName("blueSlider");
 		blueSlider.setValue(0);
 		blueSlider.setMaximum(255);
 		frame.getContentPane().add(blueSlider ,"cell 2 2,growx");
