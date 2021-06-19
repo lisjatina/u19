@@ -10,16 +10,28 @@ public enum Holiday {
 	int day;
 
 	Holiday(int month, int day) {
-		// TODO #1 implement class variables for month and day of the holiday
+		// #1 implement class variables for month and day of the holiday
+		this.day = day;
+		this.month = month;
 	}
 
 	public static Holiday getNearest(int currentMonth, int currentDay) {
 		Holiday returnHoliday = null;
-		// TODO #2 implement method which will return the nearest holiday.
+		// #2 implement method which will return the nearest holiday.
 		// HINT: note, that holidays is arranged by date ascending, so if there
-		// are
-		// no more holidays this year, first holiday in the list will be the
+		// are no more holidays this year, first holiday in the list will be the
 		// next.
+
+		returnHoliday = Holiday.NEW_YEAR;
+		for (Holiday holiday : Holiday.values()) {
+			if (holiday.getMonth() > currentMonth) {
+				return holiday;
+			} else if (holiday.getMonth() == currentMonth) {
+				if (holiday.getDay() > currentDay) {
+					return holiday;
+				}
+			}
+		}
 		return returnHoliday;
 	}
 
