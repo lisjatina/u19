@@ -5,22 +5,17 @@ import java.util.regex.Pattern;
 
 public class RegEx {
 
-	/**
-	 * This method finds out if we can make lucky number from numbers in input
-	 * string. Lucky number is number with digit sum equal to 25
-	 * 
-	 * @param string
-	 *            , needed to be checked
-	 * @return true if numbers in this number are lucky, false if not.
-	 */
 	public boolean isLuckyNumber(String input) {
 
-		// TODO #1 Remove all non digits from the input.
+		// #1 Remove all non digits from the input.
 		// HINT: use negation pattern.
 
-		// TODO #2 count the sum of all digits, and check if the sum is lucky
-		return false;
-
+		String digitsOnly = input.replaceAll("[^0-9]", "");
+		int sum = 0;
+		for (int i = 0; i < digitsOnly.length(); i++) {
+			sum += Integer.parseInt(digitsOnly.substring(i, i + 1));
+		}
+		return sum == 25;
 	}
 
 	/**
@@ -33,7 +28,15 @@ public class RegEx {
 	 *         "Ken..ny" return -1.
 	 */
 	public int findKenny(String input) {
-		return -1;
+		String regexString = "Ke[nl]{2,}y";
+		Pattern pattern = Pattern.compile(regexString);
+		Matcher matcher = pattern.matcher(input);
+		if (matcher.find()) {
+			System.out.println(input + " " + matcher.start());
+			return matcher.start();
+		} else {
+			return -1;
+		}
 	}
 
 	/**
@@ -46,7 +49,8 @@ public class RegEx {
 	 * @return true if number is valid Riga city number.
 	 */
 	public boolean isGood(String telephoneNumber) {
-		// TODO #5 check with "matches" method if this number is valid.
-		return false;
+		// #5 check with "matches" method if this number is valid.
+		String validNumber = "(\\+371)*((67|66)[0-9]{6})";
+		return telephoneNumber.matches(validNumber);
 	}
 }
